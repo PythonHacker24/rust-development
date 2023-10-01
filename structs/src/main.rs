@@ -19,6 +19,11 @@ fn main() {
         developer_status: true,
     };
 
+    let update_user = UserInfo {
+        name: "Georges".to_string(),
+        ..user
+    };
+
     let mut admin = admin_info("Leonard Hofstader".to_string(),
     25, true);
 
@@ -30,11 +35,21 @@ fn main() {
     let admin_age = admin.age;
     let admin_developer_status = admin.developer_status;
     
+    
+    let update_user_name = update_user.name;
+    let update_user_age = update_user.age;
+    let update_user_developer_status = update_user.developer_status;
+
     admin.name = "Sheldon Cooper".to_string();
 
     println!("Admin name: {} \nAge: {} \nDeveloper Status: {} \n",
              admin_name, admin_age, admin_developer_status);
 
-    println!("Username: {} \nAge: {}, \nDeveloper Status: {}", 
+    println!("Username: {} \nAge: {}, \nDeveloper Status: {} \n", 
              user_name, user_age, user_developer_status);
+
+    println!("Updated Username: {} \nAge: {} \nDeveloper Status: {} \n",
+             update_user_name, update_user_age, update_user_developer_status);
+
+    println!("Attempt to get username back: {}", user_name);
 }
