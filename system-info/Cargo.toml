@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 sys-info = "0.9.1"
 chrono = "0.4"
+colored = "2.0"
