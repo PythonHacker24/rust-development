@@ -1,7 +1,22 @@
+#[derive(Debug)]
 struct UserInfo {
     name: String,
     age: i32,
     developer_status: bool,
+}
+
+impl UserInfo {
+    fn update_name(&mut self, updated_name: String) {
+        self.name = updated_name;
+    }
+
+    fn update_age(&mut self, updated_age: i32) {
+        self.age = updated_age;
+    }
+
+    fn update_developer_status(&mut self, updated_developer_status: bool) {
+        self.developer_status = updated_developer_status;
+    }
 }
 
 struct Color(i32, i32, i32);
@@ -13,6 +28,22 @@ fn admin_info(username: String, age: i32, developer_status: bool) -> UserInfo {
         name: username,
         age,
         developer_status,
+    }
+}
+
+#[derive(Debug)]
+struct Rectangle {
+    length: i32,
+    breath: i32,
+}
+
+impl Rectangle {
+    fn area(&self, format: String) -> i32 {
+        if format == "cm" {
+            return self.length * self.breath;
+        } else {
+            return self.length * self.breath * 10000;
+        }
     }
 }
 
@@ -59,7 +90,6 @@ fn main() {
     let admin_age = admin.age;
     let admin_developer_status = admin.developer_status;
     
-    
     let update_user_name = update_user.name;
     let update_user_age = update_user.age;
     let update_user_developer_status = update_user.developer_status;
@@ -82,9 +112,31 @@ fn main() {
 
     println!("Convulation result: {}, {}, {}, {}, {} \n", 
              convolve.0, convolve.1, convolve.2, convolve.3, convolve.4);
-
+    
     let test_list: &[i32] = &vec!(1, 2, 3, 4);
     for (i, k) in test_list.iter().enumerate() {
-        println!("{}: {}", i + 1, k);  
+        println!("{}: {} \n", i + 1, k);  
     }
+    
+    let mut author = UserInfo {
+        name: "Cal Newport".to_string(),
+        age: 40,
+        developer_status: true,
+    };
+
+    println!("{:#?}\n", &author);
+
+    let rectangle = Rectangle {
+        length: 12,
+        breath: 24,
+    };
+
+    println!("The rectange:\n\n {:#?} \n\n has area: {}\n", 
+             rectangle, rectangle.area("cm".to_string()));
+
+    author.update_name("Robert Greene".to_string());
+    author.update_developer_status(false);
+    
+    println!("Updated Author: {:#?}\n", &author);
+
 }
