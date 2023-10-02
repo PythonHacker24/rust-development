@@ -43,8 +43,8 @@ fn main() {
     let mut admin = admin_info("Leonard Hofstader".to_string(),
     25, true);
 
-    let mut color1_code = Color(0, 0, 0);
-    let mut color2_code = Color(1, 2, 4);
+    let mut color1_code = Color(1, -1, 1);
+    let mut color2_code = Color(0, 1, 0);
     let origin_point = Origin(0, 0, 0);
     // Even though color_code and origin_point look the same, they are totally different
     // They can't be pushed into each others functions 
