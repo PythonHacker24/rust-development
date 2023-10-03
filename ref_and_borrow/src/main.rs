@@ -9,9 +9,7 @@ fn main() {
         let mut mod_str = s.clone();
         mod_str.push_str(", mod it is!");
         print_string(&mod_str);
-    }
-
-    print_string(&mod_str);
+    };
 
 }
 
