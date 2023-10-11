@@ -22,15 +22,13 @@ fn frame(width: i32, height: i32, frame_count: i32) -> Vec<Vec<char>> {
     let mut space_vector: Vec<Vec<char>> = Vec::new();
     let mut width_vector: Vec<char> = Vec::new();
     
-    let square_object = GeometricBounds {
-        x2: 35,
-        x1: 15,
-        y2: 15,
-        y1: 5,
-    };
+    let x2 = 35;
+    let x1 = 15;
+    let y2 = 15;
+    let y1 = 5;
 
     for pixel in 1..=width { 
-        if pixel < square_object.x2 && pixel > square_object.x1 {
+        if pixel < x2 && pixel > x1 {
             width_vector.push('+');
         } else {
             width_vector.push(' ');
