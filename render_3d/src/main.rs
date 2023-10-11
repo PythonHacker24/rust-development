@@ -1,3 +1,14 @@
+use std::process::Command;
+use std::{thread, time::Duration}; 
+
+#[derive(Debug)]
+struct GeometricBounds {
+    x2: i32,
+    x1: i32,
+    y2: i32,
+    y1: i32,
+}
+
 fn display(space_vec: Vec<Vec<char>>) {
     for vector in space_vec {
         for pixel in vector {
@@ -7,22 +18,48 @@ fn display(space_vec: Vec<Vec<char>>) {
     }
 }
 
-fn main() {
-
-    let mut space_vec: Vec<Vec<char>> = Vec::new();
-    let width: i32 = 50;
-    let height: i32 = 20;
+fn frame(width: i32, height: i32, frame_count: i32) -> Vec<Vec<char>> {
+    let mut space_vector: Vec<Vec<char>> = Vec::new();
+    let mut width_vector: Vec<char> = Vec::new();
     
-    let mut horizontal_vec: Vec<char> = Vec::new();
+    let square_object = GeometricBounds {
+        x2: 35,
+        x1: 15,
+        y2: 15,
+        y1: 5,
+    };
 
-    for _ in 1..=width {
-        let void_space = ' ';
-        horizontal_vec.push(void_space);
+    for pixel in 1..=width { 
+        if pixel < square_object.x2 && pixel > square_object.x1 {
+            width_vector.push('+');
+        } else {
+            width_vector.push(' ');
+       }
     }
 
     for _ in 1..=height {
-        space_vec.push(horizontal_vec.clone());
+        space_vector.push(width_vector.clone())
     }
 
-    display(space_vec);
+    return space_vector;
+}
+
+fn main() {
+    
+    // Setting up display configurations 
+    let width: i32 = 50;
+    let height: i32 = 20;
+    
+    for count in 1..50 {
+
+        let space_vector = frame(width, height, count);
+        for horizontal_vector in space_vector {
+            for pixel in horizontal_vector {
+                print!("{}", pixel);
+            }
+            print!("\n");
+        }
+        thread::sleep(Duration::from_millis(100));
+        Command::new("clear").status().expect("Screen clear failed!");
+    }
 }
