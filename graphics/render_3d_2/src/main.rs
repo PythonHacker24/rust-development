@@ -21,7 +21,7 @@ fn space_frame(horizontal_data: Vec<i32>, vertical_data: Vec<i32>) -> Vec<Vec<ch
     // vertical_data: [ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0]
 
     let void_element: char = ' ';
-    let filled_element: char = '*';
+    let filled_element: char = '|';
 
     let mut frame_vector: Vec<Vec<char>> = Vec::new();
     for vertical_element in vertical_data {
