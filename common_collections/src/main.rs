@@ -19,7 +19,18 @@ fn main() {
     }
 
     let mut login_vector = vec![
-        login_info::username("roboto"),
+        login_info::username(String::from("roboto")),
         login_info::age(19),
-    ],
+    ];
+
+    for i in login_vector {
+        match i {
+            age => println!("i32"),
+        }
+    }
+
+    let mut s1 = String::from("hello");
+    let s2 = ", world";
+    s1.push_str(s2);
+    println!("{}", s1);
 }
