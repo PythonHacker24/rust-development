@@ -40,4 +40,15 @@ fn main() {
     shop.entry(String::from("screws")).or_insert(100);
 
     println!("{:#?}", shop);
+    
+    //code to count number of words and occurances of them in a string
+    let text = "When a man tries to be a man trying to try the man";
+    let mut map = HashMap::new();
+    
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("No. of words in the text: {:#?}", map);
 }
