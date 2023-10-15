@@ -31,6 +31,6 @@ fn main() {
 
     let mut s1 = String::from("hello");
     let s2 = ", world";
-    s1.push_str(s2);
+    s1.push_str(s2);        // s2 is still valid as the push_str does not take the ownership of s2 
     println!("{}", s1);
 }
