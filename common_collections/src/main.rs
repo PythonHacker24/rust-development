@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 enum login_info {
     username(String),
     age(i32),
@@ -23,14 +25,19 @@ fn main() {
         login_info::age(19),
     ];
 
-    for i in login_vector {
-        match i {
-            age => println!("i32"),
-        }
-    }
-
     let mut s1 = String::from("hello");
     let s2 = ", world";
     s1.push_str(s2);        // s2 is still valid as the push_str does not take the ownership of s2 
     println!("{}", s1);
+
+    let mut shop = HashMap::new();
+    shop.insert(String::from("nuts"), 10);
+    shop.insert(String::from("bolts"), 20);
+    shop.insert(String::from("wires"), 50);
+    shop.insert(String::from("drivers"), 80);
+    
+    shop.entry(String::from("nuts")).or_insert(20);
+    shop.entry(String::from("screws")).or_insert(100);
+
+    println!("{:#?}", shop);
 }
