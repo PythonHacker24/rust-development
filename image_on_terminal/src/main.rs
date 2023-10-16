@@ -65,7 +65,7 @@ fn main() {
 
     for horizontal_vector in character_image_vector {
         for pixel in horizontal_vector {
-            print!("{}", pixel);
+            print!("{}  ", pixel);
         }
         print!("\n");
     }
