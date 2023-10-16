@@ -51,7 +51,8 @@ fn characters_vector(intensity_vector: Vec<Vec<u8>>) -> Vec<Vec<char>> {
             else if pixel_value >= 160 && pixel_value < 180 { char_horizontal_vector.push(';')}
             else if pixel_value >= 180 && pixel_value < 220 { char_horizontal_vector.push(';') }
             else if pixel_value >= 220 && pixel_value < 240 { char_horizontal_vector.push(',') }
-            else { char_horizontal_vector.push('.') } 
+            else if pixel_value >=240 && pixel_value < 255 { char_horizontal_vector.push('.') }
+            else { char_horizontal_vector.push(' ') } 
         }
         output.push(char_horizontal_vector);
     }
