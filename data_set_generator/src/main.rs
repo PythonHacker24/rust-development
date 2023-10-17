@@ -58,8 +58,8 @@ fn main() {
     let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
     let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
     let linear_vector: Vec<u8> = linearator(pixelated_vector);
-    for pixel in linear_vector {
-        print!("{} ", pixel);
+    for _ in linear_vector {
+        print!("■ ");
     }
 }
 
