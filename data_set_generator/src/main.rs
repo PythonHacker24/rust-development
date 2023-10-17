@@ -25,15 +25,14 @@ fn image_to_vector(location: String) -> Vec<Vec<Vec<u8>>>{
 
 }
 
-fn rgb_to_intensity_vector(image_vector: Vec<Vec<Vec<u8>>>) -> Vec<Vec<u8>> {
+fn r_pixelator(image_vector: Vec<Vec<Vec<u8>>>) -> Vec<Vec<u8>> {
     let mut output: Vec<Vec<u8>> = Vec::new();
     for horizontal_vector in image_vector {
-        let mut horizontal_intensity_vector: Vec<u8> = Vec::new();
+        let mut output_horizontal_vector: Vec<u8> = Vec::new();
         for rgb_vector in horizontal_vector {
-            let value = (rgb_vector[0] + rgb_vector[1] + rgb_vector[2]) / 3;
-            horizontal_intensity_vector.push(value);
+            output_horizontal_vector.push(rgb_vector[0]);
         }
-        output.push(horizontal_intensity_vector);
+        output.push(output_horizontal_vector);
     }
     return output;
 }
@@ -55,3 +54,7 @@ fn main() {
         print!("\n");
     } 
 }
+
+// Notes //  
+// The dataset that has been provided has the values of r, g, and b equal.
+// consider only r value for the pixel
