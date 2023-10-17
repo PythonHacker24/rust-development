@@ -38,7 +38,7 @@ fn r_pixelator(image_vector: Vec<Vec<Vec<u8>>>) -> Vec<Vec<u8>> {
 }
 
 fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
-    let output: Vec<u8> = Vec::new();
+    let mut output: Vec<u8> = Vec::new();
     for horizontal_vector in pixelated_vector {
         for pixel in horizontal_vector {
             output.push(pixel);
