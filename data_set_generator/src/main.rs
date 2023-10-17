@@ -60,7 +60,7 @@ fn main() {
     let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
     let linear_vector: Vec<u8> = linearator(pixelated_vector);
 
-    for pixel in linearator {
+    for pixel in linear_vector {
         print!("{} ", linear_vector);
     }
      
