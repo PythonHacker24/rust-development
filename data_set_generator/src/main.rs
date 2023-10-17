@@ -47,8 +47,20 @@ fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
     return output;
 }
 
+fn dataset_generator(path: String) -> Vec<Vec<Vec<u8>>> {
+    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(path);
+    let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
+    let linear_vector: Vec<u8> = linearator(pixelated_vector);
+    
+    let mut dataset: Vec<Vec<Vec<u8>>> = Vec::new();
+    for number in 1..=9 {
+        let image_folder = format!(r#"{}/{}"#, path, number);
+    }
+}
+
 fn main() {
     
+    // Path: Path/{number}/images.jpg
     let args: Vec<String> = env::args().skip(1).collect();
     if args.is_empty() {
         println!("[*] Path to image not provided!");
@@ -58,12 +70,9 @@ fn main() {
     let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
     let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
     let linear_vector: Vec<u8> = linearator(pixelated_vector);
-    let mut counter = 0;
-    for _ in linear_vector {
-        print!("■ ");
-        counter += 1;
-    }
-    print!("{}", counter);
+    
+    let mut dataset: Vec<Vec<Vec<u8>>> = Vec::new();
+     
 }
 
 // Notes //  
