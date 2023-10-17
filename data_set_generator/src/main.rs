@@ -49,7 +49,7 @@ fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
 
 fn dataset_generator(path: String) -> Vec<String> {
     let entry_vector: Vec<String> = Vec::new();
-    let entires = fs::read_dir(path)?;
+    let entries = fs::read_dir(path)?;
     for entry in entries {
         let entry = entry?;
         if entry.file_type()?.is_file() {
