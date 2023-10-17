@@ -51,7 +51,7 @@ fn dataset_generator(path: String) -> Vec<String> {
     let entry_vector: Vec<String> = Vec::new();
     let entries = fs::read_dir(path);
     for entry in entries {
-        if entry.file_type().is_file() {
+        if entry.is_file() {
             let file_path = entry.path();
             entry_vector.push(file_path);
         }
