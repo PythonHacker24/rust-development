@@ -61,7 +61,7 @@ fn main() {
     let linear_vector: Vec<u8> = linearator(pixelated_vector);
 
     for pixel in linear_vector {
-        print!("{} ", linear_vector);
+        print!("{} ", pixel);
     }
      
 }
