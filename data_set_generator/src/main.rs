@@ -37,6 +37,15 @@ fn r_pixelator(image_vector: Vec<Vec<Vec<u8>>>) -> Vec<Vec<u8>> {
     return output;
 }
 
+fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
+    let output: Vec<u8> = Vec::new();
+    for horizontal_vector in pixelated_vector {
+        for pixel in horizontal_vector {
+            output.push(pixel);
+        }
+    }
+    return output;
+}
 
 fn main() {
     
@@ -48,11 +57,9 @@ fn main() {
 
     let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
     let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
-    for horizontal_vector in pixelated_vector {
-        for pixel in horizontal_vector {
-            print!("{} ", pixel);
-        }
-        print!("\n");
+    let linear_vector: Vec<u8> = linearator(pixelated_vector);
+    for pixel in linear_vector {
+        print!("{}", pixel);
     }
 }
 
