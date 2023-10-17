@@ -46,10 +46,19 @@ fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
     }
     return output;
 }
-//
-// fn dataset_generator(path: String) -> Vec<Vec<Vec<u8>>> {
-//     let entires =  
-// }
+
+fn dataset_generator(path: String) -> Vec<Vec<Vec<u8>>> {
+    let entry_vector: Vec<String> = Vec::new();
+    let entires = fs::read_dir(path)?;
+    for entry in entries {
+        let entry = entry?;
+        if entry.file_type()?.is_file() {
+            let file_path = entry.path();
+            entry_vector.push(file_path);
+        }
+    }
+    return entry_vector;
+}
 
 fn main() {
     
@@ -64,7 +73,10 @@ fn main() {
     let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
     let linear_vector: Vec<u8> = linearator(pixelated_vector);
     
-    let mut dataset: Vec<Vec<Vec<u8>>> = Vec::new();
+    let mut dataset: Vec<Vec<Vec<u8>>> = dataset_generator(args[0].clone());
+    for path in dataset {
+        println!("{}", path);
+    }
      
 }
 
