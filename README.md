@@ -10,5 +10,5 @@
 </p>
 
 <p align=center>
-  <img height="600" width="1200" src="https://github.com/PythonHacker24/rust-development/blob/main/image_on_terminal/src/images/Screenshot%202023-10-17%20at%2019.32.23.png?raw=true">
+  <img height="400" width="700" src="https://github.com/PythonHacker24/rust-development/blob/main/image_on_terminal/src/images/Screenshot%202023-10-17%20at%2019.32.23.png?raw=true">
 </p>
