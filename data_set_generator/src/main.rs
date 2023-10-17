@@ -47,12 +47,13 @@ fn main() {
     }
 
     let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
-    for horizontal_vector in image_vector {
-        for rgb_vector in horizontal_vector {
-            print!("( {} {} {} )", rgb_vector[0], rgb_vector[1], rgb_vector[2]);
+    let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
+    for horizontal_vector in pixelated_vector {
+        for pixel in horizontal_vector {
+            print!("{} ", pixel);
         }
         print!("\n");
-    } 
+    }
 }
 
 // Notes //  
