@@ -1,6 +1,6 @@
 extern crate image; 
 
-use std::env;
+use std::{env, fs, fs::File, io::{BufRead, BufReader}};
 use image::GenericImageView;
 
 fn image_to_vector(location: String) -> Vec<Vec<Vec<u8>>>{
@@ -46,17 +46,10 @@ fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
     }
     return output;
 }
-
-fn dataset_generator(path: String) -> Vec<Vec<Vec<u8>>> {
-    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(path);
-    let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
-    let linear_vector: Vec<u8> = linearator(pixelated_vector);
-    
-    let mut dataset: Vec<Vec<Vec<u8>>> = Vec::new();
-    for number in 1..=9 {
-        let image_folder = format!(r#"{}/{}"#, path, number);
-    }
-}
+//
+// fn dataset_generator(path: String) -> Vec<Vec<Vec<u8>>> {
+//     let entires =  
+// }
 
 fn main() {
     
