@@ -1,5 +1,6 @@
 extern crate image; 
 
+use std::env;
 use image::GenericImageView;
 
 fn image_to_vector(location: String) -> Vec<Vec<Vec<u8>>>{
@@ -38,18 +39,19 @@ fn rgb_to_intensity_vector(image_vector: Vec<Vec<Vec<u8>>>) -> Vec<Vec<u8>> {
 }
 
 
-
 fn main() {
     
-    let image_link: String = "Image link";
-    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(image_link.to_string()); 
-    let intensity_vector: Vec<Vec<u8>> = rgb_to_intensity_vector(image_vector);
-    let character_image_vector: Vec<Vec<char>> = characters_vector(intensity_vector);
+    let args: Vec<String> = env::args().skip(1).collect();
+    if args.is_empty() {
+        println!("[*] Path to image not provided!");
+        std::process::exit(1);
+    }
 
-    for horizontal_vector in character_image_vector {
-        for pixel in horizontal_vector {
-            print!("{}  ", pixel);
+    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
+    for horizontal_vector in image_vector {
+        for rgb_vector in horizontal_vector {
+            print!("( {} {} {} )", rgb_vector[0], rgb_vector[1], rgb_vector[2]);
         }
         print!("\n");
-    }
+    } 
 }
