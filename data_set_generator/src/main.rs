@@ -55,6 +55,21 @@ fn linear_data_of_image(path: String) -> Vec<u8> {
     return linear_vector;
 }
 
+fn process_images_in_directory(input_dir: String, output_dir: String) -> Result<(), Box<dyn std::error::Error>> {
+    for entry in fs::read_dir(input_dir)? {
+        let entry = entry?;
+        let path = entry.path();
+
+        if let Some(extension) = path.extension() {
+            if extension == "jpg" {
+                let linear_vector = linear_data_of_image(path.to_string());
+                println!("Linear vector generated!");
+            }
+        }
+    }
+    Ok(())
+}
+
 fn main() {
     
     // Path: Path/{number}
@@ -64,7 +79,7 @@ fn main() {
         std::process::exit(1);
     }
     
-    let linear_vector = linear_data_of_image(args[0].clone());
+    process_images_in_directory(args[0].clone(), args[1].clone());
     println!("Success!");
      
 }
