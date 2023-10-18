@@ -64,7 +64,8 @@ fn main() {
         std::process::exit(1);
     }
     
-    linear_vector = linear_data_of_image(args[0].clone());
+    let linear_vector = linear_data_of_image(args[0].clone());
+    println!("Success!");
      
 }
 
