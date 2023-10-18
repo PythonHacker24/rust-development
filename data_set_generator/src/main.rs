@@ -55,7 +55,7 @@ fn linear_data_of_image(path: String) -> Vec<u8> {
     return linear_vector;
 }
 
-fn process_images_in_directory(input_dir: String, output_dir: String) -> Result<(), Box<dyn std::error::Error>> {
+fn process_images_in_directory(input_dir: String, output_dir: String, database_vec: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn std::error::Error>> {
     for entry in fs::read_dir(input_dir)? {
         let entry = entry?;
         let path = entry.path();
@@ -64,7 +64,7 @@ fn process_images_in_directory(input_dir: String, output_dir: String) -> Result<
             if extension == "jpg" {
                 let string_path = path.to_string_lossy().to_string();
                 let linear_vector = linear_data_of_image(string_path);
-                println!("Linear vector generated!");
+                database_vec.push(linear_vector);
             }
         }
     }
@@ -80,9 +80,14 @@ fn main() {
         std::process::exit(1);
     }
     
-    process_images_in_directory(args[0].clone(), args[1].clone());
-    println!("Success!");
-     
+    let mut database_vec: Vec<Vec<u8>> = Vec::new();
+    process_images_in_directory(args[0].clone(), args[1].clone(), &mut database_vec);
+    for horizontal_vector in database_vec {
+        for pixel in horizontal_vector {
+            print!("{}", pixel);
+        }
+        print!("\n");
+    } 
 }
 
 // Notes //  
