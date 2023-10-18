@@ -55,7 +55,7 @@ fn linear_data_of_image(path: String) -> Vec<u8> {
     return linear_vector;
 }
 
-fn process_images_in_directory(input_dir: String, output_dir: String, database_vec: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn std::error::Error>> {
+fn process_images_in_directory(input_dir: String, database_vec: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn std::error::Error>> {
     for entry in fs::read_dir(input_dir)? {
         let entry = entry?;
         let path = entry.path();
@@ -81,7 +81,7 @@ fn main() {
     }
     
     let mut database_vec: Vec<Vec<u8>> = Vec::new();
-    process_images_in_directory(args[0].clone(), args[1].clone(), &mut database_vec);
+    let _ = process_images_in_directory(args[0].clone(), &mut database_vec);
     for horizontal_vector in database_vec {
         for pixel in horizontal_vector {
             print!("{}", pixel);
