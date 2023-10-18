@@ -62,7 +62,7 @@ fn process_images_in_directory(input_dir: String, output_dir: String) -> Result<
 
         if let Some(extension) = path.extension() {
             if extension == "jpg" {
-                let string_path = path.to_string();
+                let string_path = path.to_string_lossy().to_string();
                 let linear_vector = linear_data_of_image(string_path);
                 println!("Linear vector generated!");
             }
