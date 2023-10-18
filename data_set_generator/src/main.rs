@@ -47,22 +47,24 @@ fn linearator(pixelated_vector: Vec<Vec<u8>>) -> Vec<u8> {
     return output;
 }
 
+fn linear_data_of_image(path: String) -> Vec<u8> {
+    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(path);
+    let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
+    let linear_vector: Vec<u8> = linearator(pixelated_vector);
+    
+    return linear_vector;
+}
+
 fn main() {
     
-    // Path: Path/{number}/images.jpg
+    // Path: Path/{number}
     let args: Vec<String> = env::args().skip(1).collect();
     if args.is_empty() {
         println!("[*] Path to image not provided!");
         std::process::exit(1);
     }
-
-    let image_vector: Vec<Vec<Vec<u8>>> = image_to_vector(args[0].clone()); 
-    let pixelated_vector: Vec<Vec<u8>> = r_pixelator(image_vector);
-    let linear_vector: Vec<u8> = linearator(pixelated_vector);
-
-    for pixel in linear_vector {
-        print!("{} ", pixel);
-    }
+    
+    linear_vector = linear_data_of_image(args[0].clone());
      
 }
 
