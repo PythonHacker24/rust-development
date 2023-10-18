@@ -1,6 +1,6 @@
 extern crate image; 
 
-use std::{env, fs, fs::File};
+use std::{env, fs};
 use image::GenericImageView;
 
 fn image_to_vector(location: String) -> Vec<Vec<Vec<u8>>>{
