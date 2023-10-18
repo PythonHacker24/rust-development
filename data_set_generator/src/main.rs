@@ -84,7 +84,7 @@ fn main() {
     let _ = process_images_in_directory(args[0].clone(), &mut database_vec);
     for horizontal_vector in database_vec {
         for pixel in horizontal_vector {
-            print!("{}", pixel);
+            print!("{},", pixel);
         }
         print!("\n");
     } 
