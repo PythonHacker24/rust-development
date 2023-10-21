@@ -43,12 +43,12 @@ fn characters_vector(intensity_vector: Vec<Vec<u8>>) -> Vec<Vec<char>> {
     for horizontal_vector in intensity_vector {
         let mut char_horizontal_vector: Vec<char> = Vec::new();
         for pixel_value in horizontal_vector {
-            if pixel_value < 50 { char_horizontal_vector.push('■') }
-            else if pixel_value >=80 && pixel_value < 100 { char_horizontal_vector.push(' ') }
-            else if pixel_value >=100 && pixel_value < 120 { char_horizontal_vector.push('&') }
-            else if pixel_value >= 120 && pixel_value < 140 { char_horizontal_vector.push('=') }
+            if pixel_value < 50 { char_horizontal_vector.push('#') }
+            else if pixel_value >=80 && pixel_value < 100 { char_horizontal_vector.push('@') }
+            else if pixel_value >=100 && pixel_value < 120 { char_horizontal_vector.push('%') }
+            else if pixel_value >= 120 && pixel_value < 140 { char_horizontal_vector.push('*') }
             else if pixel_value >=140 && pixel_value < 160 { char_horizontal_vector.push('+') }
-            else if pixel_value >= 160 && pixel_value < 180 { char_horizontal_vector.push(';')}
+            else if pixel_value >= 160 && pixel_value < 180 { char_horizontal_vector.push('/')}
             else if pixel_value >= 180 && pixel_value < 220 { char_horizontal_vector.push(':') }
             else if pixel_value >= 220 && pixel_value < 240 { char_horizontal_vector.push(',') }
             else if pixel_value >=240 && pixel_value < 255 { char_horizontal_vector.push('.') }
